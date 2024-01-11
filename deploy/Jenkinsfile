@@ -10,7 +10,8 @@ pipeline {
         checkout scm
       	sh 'pwd'
         sh 'cd dispatch
-        docker build -t hpjrvs/dispatch:latest .'
+        docker build -t hpjrvs/dispatch:latest .
+        docker images'
       }
     }
   }
