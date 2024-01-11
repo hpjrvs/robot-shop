@@ -3,9 +3,12 @@ pipeline {
   stages {
   	stage('build docker images') {
     	agent {
-      	 checkout scm
+      	docker {
+        	image 'maven:3.5.0'
+        }
       }
       steps {
+        checkout scm
       	sh 'mvn clean install'
       }
     }
