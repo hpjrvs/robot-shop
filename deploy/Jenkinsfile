@@ -12,7 +12,7 @@ pipeline {
         pwd
         cd dispatch
         docker build -t hpjrvs/dispatch:latest .
-        docker push hpjrvs/dispatch'
+        docker push hpjrvs/dispatch'''
       }
     }
   }
