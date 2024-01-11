@@ -9,9 +9,8 @@ pipeline {
       steps {
         checkout scm
       	sh 'pwd'
-        sh 'cd dispatch'
-        sh 'ls -altr'
-        sh 'docker build .'
+        sh 'cd dispatch
+        docker build -t hpjrvs/dispatch:latest .'
       }
     }
   }
