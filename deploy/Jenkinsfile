@@ -1,18 +1,20 @@
 pipeline {
 	agent none
   stages {
-  	stage('build docker images') {
+  	stage('build and push dispatch') {
     	agent {
       	any {
+            label 'labelName'
         }
+        checkout scm
       }
       steps {
-        checkout scm
-      	sh '''
+        sh '''
         pwd
         cd dispatch
-        docker build -t hpjrvs/dispatch:latest .
+        docker build -t hpjrvs/dispatch .
         docker push hpjrvs/dispatch'''
+        
       }
     }
   }
