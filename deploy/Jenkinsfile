@@ -5,8 +5,9 @@ pipeline {
     	agent {
       	any {
             label 'labelName'
+            checkout scm
+            
         }
-        checkout scm
       }
       steps {
         sh '''
