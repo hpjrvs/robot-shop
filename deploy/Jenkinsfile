@@ -21,6 +21,26 @@ pipeline {
                     docker push hpjrvs/mongodb'''
         }
       }
+      stage('build and push fluentd') {
+        steps{
+                sh '''
+                    pwd
+                    ls -altr
+                    cd fluentd
+                    docker build -t hpjrvs/fluentd .
+                    docker push hpjrvs/fluentd'''
+        }
+      }
+      stage('build and push mysql') {
+        steps{
+                sh '''
+                    pwd
+                    ls -altr
+                    cd mysql
+                    docker build -t hpjrvs/mysql .
+                    docker push hpjrvs/mysql'''
+        }
+      }
       stage('build and push cart') {
         steps{
                 sh '''
@@ -37,6 +57,15 @@ pipeline {
                     cd catalogue
                     docker build -t hpjrvs/catalogue .
                     docker push hpjrvs/catalogue'''
+        }
+      }
+      stage('build and push payment') {
+        steps{
+                sh '''
+                    pwd
+                    cd payment
+                    docker build -t hpjrvs/payment .
+                    docker push hpjrvs/payment'''
         }
       }
     }
