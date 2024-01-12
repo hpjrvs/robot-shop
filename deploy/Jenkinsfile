@@ -58,5 +58,37 @@ pipeline {
                     docker push hpjrvs/payment'''
         }
       }
+      stage('build and push ratings') {
+        steps{
+                sh '''
+                    cd payment
+                    docker build -t hpjrvs/ratings .
+                    docker push hpjrvs/ratings'''
+        }
+      }
+      stage('build and push shipping') {
+        steps{
+                sh '''
+                    cd payment
+                    docker build -t hpjrvs/shipping .
+                    docker push hpjrvs/shipping'''
+        }
+      }
+      stage('build and push user') {
+        steps{
+                sh '''
+                    cd user
+                    docker build -t hpjrvs/user .
+                    docker push hpjrvs/user'''
+        }
+      }
+      stage('build and push web') {
+        steps{
+                sh '''
+                    cd user
+                    docker build -t hpjrvs/web .
+                    docker push hpjrvs/web'''
+        }
+      }
     }
   }
