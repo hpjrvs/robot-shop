@@ -18,14 +18,14 @@ pipeline {
                     docker push hpjrvs/mongodb'''
         }
       }
-      stage('build and push fluentd') {
-        steps{
+      //stage('build and push fluentd') {
+      //  steps{
                 //sh '''
                 //    cd fluentd
                 //    docker build -t hpjrvs/fluentd .
                 //    docker push hpjrvs/fluentd'''
-        }
-      }
+      //  }
+     // }
       stage('build and push mysql') {
         steps{
                 sh '''
