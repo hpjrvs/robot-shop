@@ -1,20 +1,17 @@
+/* groovylint-disable CompileStatic */
 pipeline {
-	agent none
-    
+    agent { node { label 'padrao' } }
   stages {
-  	stage('build and push dispatch') {
-    	agent {
-      	any {
-            label 'labelName'
+      stage('build and push dispatch') {
+        steps{
+            step{
+                sh '''
+                    pwd
+                    cd dispatch
+                    docker build -t hpjrvs/dispatch .
+                    docker push hpjrvs/dispatch'''
+            }
         }
-      }
-      steps {
-        sh '''
-        pwd
-        cd dispatch
-        docker build -t hpjrvs/dispatch .
-        docker push hpjrvs/dispatch'''
       }
     }
   }
-}
