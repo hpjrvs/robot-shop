@@ -1,12 +1,11 @@
 pipeline {
-	agent none
+  agent none
+  checkout scm
   stages {
   	stage('build and push dispatch') {
     	agent {
       	any {
             label 'labelName'
-            checkout scm
-            
         }
       }
       steps {
