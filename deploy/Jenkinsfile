@@ -4,9 +4,10 @@ pipeline {
   stages {
     stage('Checkout SCM') {
     	agent {
-      	any {
-            checkout scm
-        }
+      	any {}
+      }
+      steps{
+        checkout scm
       }
     }
   	stage('build and push dispatch') {
