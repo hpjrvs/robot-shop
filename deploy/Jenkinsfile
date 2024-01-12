@@ -8,6 +8,7 @@ pipeline {
             checkout scm
         }
       }
+    }
   	stage('build and push dispatch') {
     	agent {
       	any {
