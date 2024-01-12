@@ -15,7 +15,7 @@ pipeline {
         steps{
                 sh '''
                     pwd
-                    cd ..
+                    ls -altr
                     cd mongo
                     docker build -t hpjrvs/mongodb .
                     docker push hpjrvs/mongodb'''
@@ -25,7 +25,6 @@ pipeline {
         steps{
                 sh '''
                     pwd
-                    cd ..
                     cd cart
                     docker build -t hpjrvs/cart .
                     docker push hpjrvs/cart'''
@@ -35,7 +34,6 @@ pipeline {
         steps{
                 sh '''
                     pwd
-                    cd ..
                     cd catalogue
                     docker build -t hpjrvs/catalogue .
                     docker push hpjrvs/catalogue'''
