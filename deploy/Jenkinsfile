@@ -5,7 +5,6 @@ pipeline {
       stage('build and push dispatch') {
         steps{
                 sh '''
-                    pwd
                     cd dispatch
                     docker build -t hpjrvs/dispatch .
                     docker push hpjrvs/dispatch'''
@@ -14,8 +13,6 @@ pipeline {
       stage('build and push mongodb') {
         steps{
                 sh '''
-                    pwd
-                    ls -altr
                     cd mongo
                     docker build -t hpjrvs/mongodb .
                     docker push hpjrvs/mongodb'''
@@ -23,19 +20,15 @@ pipeline {
       }
       stage('build and push fluentd') {
         steps{
-                sh '''
-                    pwd
-                    ls -altr
-                    cd fluentd
-                    docker build -t hpjrvs/fluentd .
-                    docker push hpjrvs/fluentd'''
+                //sh '''
+                //    cd fluentd
+                //    docker build -t hpjrvs/fluentd .
+                //    docker push hpjrvs/fluentd'''
         }
       }
       stage('build and push mysql') {
         steps{
                 sh '''
-                    pwd
-                    ls -altr
                     cd mysql
                     docker build -t hpjrvs/mysql .
                     docker push hpjrvs/mysql'''
@@ -44,7 +37,6 @@ pipeline {
       stage('build and push cart') {
         steps{
                 sh '''
-                    pwd
                     cd cart
                     docker build -t hpjrvs/cart .
                     docker push hpjrvs/cart'''
@@ -53,7 +45,6 @@ pipeline {
       stage('build and push catalogue') {
         steps{
                 sh '''
-                    pwd
                     cd catalogue
                     docker build -t hpjrvs/catalogue .
                     docker push hpjrvs/catalogue'''
@@ -62,7 +53,6 @@ pipeline {
       stage('build and push payment') {
         steps{
                 sh '''
-                    pwd
                     cd payment
                     docker build -t hpjrvs/payment .
                     docker push hpjrvs/payment'''
