@@ -1,7 +1,13 @@
 pipeline {
-  agent none
-  checkout scm
+	agent none
+    
   stages {
+    stage('Checkout SCM') {
+    	agent {
+      	any {
+            checkout scm
+        }
+      }
   	stage('build and push dispatch') {
     	agent {
       	any {
