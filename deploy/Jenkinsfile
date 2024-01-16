@@ -6,16 +6,16 @@ pipeline {
         steps{
                 sh '''
                     cd dispatch
-                    docker build -t hpjrvs/dispatch .
-                    docker push hpjrvs/dispatch'''
+                    docker build -t hpjrvs/dispatch:${BUILD_NUMBER} .
+                    docker push hpjrvs/dispatch:${BUILD_NUMBER}'''
         }
       }
       stage('build and push mongodb') {
         steps{
                 sh '''
                     cd mongo
-                    docker build -t hpjrvs/mongodb .
-                    docker push hpjrvs/mongodb'''
+                    docker build -t hpjrvs/mongodb:${BUILD_NUMBER} .
+                    docker push hpjrvs/mongodb:${BUILD_NUMBER}'''
         }
       }
       //stage('build and push fluentd') {
@@ -30,64 +30,73 @@ pipeline {
         steps{
                 sh '''
                     cd mysql
-                    docker build -t hpjrvs/mysql .
-                    docker push hpjrvs/mysql'''
+                    docker build -t hpjrvs/mysql:${BUILD_NUMBER} .
+                    docker push hpjrvs/mysql:${BUILD_NUMBER}'''
         }
       }
       stage('build and push cart') {
         steps{
                 sh '''
                     cd cart
-                    docker build -t hpjrvs/cart .
-                    docker push hpjrvs/cart'''
+                    docker build -t hpjrvs/cart:${BUILD_NUMBER} .
+                    docker push hpjrvs/cart:${BUILD_NUMBER}'''
         }
       }
       stage('build and push catalogue') {
         steps{
                 sh '''
                     cd catalogue
-                    docker build -t hpjrvs/catalogue .
-                    docker push hpjrvs/catalogue'''
+                    docker build -t hpjrvs/catalogue:${BUILD_NUMBER} .
+                    docker push hpjrvs/catalogue:${BUILD_NUMBER}'''
         }
       }
       stage('build and push payment') {
         steps{
                 sh '''
                     cd payment
-                    docker build -t hpjrvs/payment .
-                    docker push hpjrvs/payment'''
+                    docker build -t hpjrvs/payment:${BUILD_NUMBER} .
+                    docker push hpjrvs/payment:${BUILD_NUMBER}'''
         }
       }
       stage('build and push ratings') {
         steps{
                 sh '''
-                    cd payment
-                    docker build -t hpjrvs/ratings .
-                    docker push hpjrvs/ratings'''
+                    cd ratings
+                    docker build -t hpjrvs/ratings:${BUILD_NUMBER} .
+                    docker push hpjrvs/ratings:${BUILD_NUMBER}'''
         }
       }
       stage('build and push shipping') {
         steps{
                 sh '''
-                    cd payment
-                    docker build -t hpjrvs/shipping .
-                    docker push hpjrvs/shipping'''
+                    cd shipping
+                    docker build -t hpjrvs/shipping:${BUILD_NUMBER} .
+                    docker push hpjrvs/shipping:${BUILD_NUMBER}'''
         }
       }
       stage('build and push user') {
         steps{
                 sh '''
                     cd user
-                    docker build -t hpjrvs/user .
-                    docker push hpjrvs/user'''
+                    docker build -t hpjrvs/user:${BUILD_NUMBER} .
+                    docker push hpjrvs/user:${BUILD_NUMBER}'''
         }
       }
       stage('build and push web') {
         steps{
                 sh '''
                     cd user
-                    docker build -t hpjrvs/web .
-                    docker push hpjrvs/web'''
+                    docker build -t hpjrvs/web:${BUILD_NUMBER} .
+                    docker push hpjrvs/web:${BUILD_NUMBER}'''
+        }
+      }
+      stage('Deploy Helm') {
+        steps{
+                sh '''
+                    cd K8s/helm
+                    kubectl create ns robot-shop
+                    helm install .
+                    '''
         }
       }
     }
