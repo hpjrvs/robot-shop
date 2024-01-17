@@ -43,7 +43,7 @@ spec:
             memory: 100Mi
 
 EOF
-kubectl apply -f load-deployment.yaml
+kubectl apply -f load-deployment.yaml -n robot-shop
 '''
         }
       }
