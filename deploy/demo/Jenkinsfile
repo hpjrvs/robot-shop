@@ -32,7 +32,7 @@ spec:
           - name: SILENT
             value: "1"
           - name: ERROR
-            value: "0"
+            value: "1"
         image: robotshop/rs-load:latest
         resources:
           limits:
