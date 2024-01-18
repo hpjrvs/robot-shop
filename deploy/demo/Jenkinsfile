@@ -1,6 +1,6 @@
 /* groovylint-disable CompileStatic */
 pipeline {
-    agent { node { label 'padrao' } }
+    agent { node { label 'CI/CD deployment' } }
   stages {
       stage('Build and deploy an updated version') {
         steps{
